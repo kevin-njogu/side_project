@@ -1,12 +1,14 @@
 import express from "express";
 import { connect } from "mongoose";
 import "dotenv/config";
-import router from "./routes/routes.js";
+import company_router from "./routes/company_routes.js";
+import user_router from "./routes/user_routes.js";
 
 const app = express();
 
 app.use(express.json());
-app.use("/api", router);
+app.use("/api", company_router);
+app.use("/api", user_router);
 
 connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
